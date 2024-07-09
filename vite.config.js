@@ -6,6 +6,6 @@ export default defineConfig({
   base: "/shri-perf/",
   plugins: [react()],
   build: {
-    minify: "terser",
+    minify: "esbuild",
   },
 });
