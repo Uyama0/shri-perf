@@ -1,142 +1,7 @@
 import React from "react";
-
 import Event from "./event";
 
-const TABS = {
-  all: {
-    title: "Все",
-    items: [
-      {
-        icon: "light2",
-        iconLabel: "Освещение",
-        title: "Xiaomi Yeelight LED Smart Bulb",
-        subtitle: "Включено",
-      },
-      {
-        icon: "light",
-        iconLabel: "Освещение",
-        title: "D-Link Omna 180 Cam",
-        subtitle: "Включится в 17:00",
-      },
-      {
-        icon: "temp",
-        iconLabel: "Температура",
-        title: "Elgato Eve Degree Connected",
-        subtitle: "Выключено до 17:00",
-      },
-      {
-        icon: "light",
-        iconLabel: "Освещение",
-        title: "LIFX Mini Day & Dusk A60 E27",
-        subtitle: "Включится в 17:00",
-      },
-      {
-        icon: "light2",
-        iconLabel: "Освещение",
-        title: "Xiaomi Mi Air Purifier 2S",
-        subtitle: "Включено",
-      },
-      {
-        icon: "light",
-        iconLabel: "Освещение",
-        title: "Philips Zhirui",
-        subtitle: "Включено",
-      },
-      {
-        icon: "light",
-        iconLabel: "Освещение",
-        title: "Philips Zhirui",
-        subtitle: "Включено",
-      },
-      {
-        icon: "light2",
-        iconLabel: "Освещение",
-        title: "Xiaomi Mi Air Purifier 2S",
-        subtitle: "Включено",
-      },
-    ],
-  },
-  kitchen: {
-    title: "Кухня",
-    items: [
-      {
-        icon: "light2",
-        iconLabel: "Освещение",
-        title: "Xiaomi Yeelight LED Smart Bulb",
-        subtitle: "Включено",
-      },
-      {
-        icon: "temp",
-        iconLabel: "Температура",
-        title: "Elgato Eve Degree Connected",
-        subtitle: "Выключено до 17:00",
-      },
-    ],
-  },
-  hall: {
-    title: "Зал",
-    items: [
-      {
-        icon: "light",
-        iconLabel: "Освещение",
-        title: "Philips Zhirui",
-        subtitle: "Выключено",
-      },
-      {
-        icon: "light2",
-        iconLabel: "Освещение",
-        title: "Xiaomi Mi Air Purifier 2S",
-        subtitle: "Выключено",
-      },
-    ],
-  },
-  lights: {
-    title: "Лампочки",
-    items: [
-      {
-        icon: "light",
-        iconLabel: "Освещение",
-        title: "D-Link Omna 180 Cam",
-        subtitle: "Включится в 17:00",
-      },
-      {
-        icon: "light",
-        iconLabel: "Освещение",
-        title: "LIFX Mini Day & Dusk A60 E27",
-        subtitle: "Включится в 17:00",
-      },
-      {
-        icon: "light2",
-        iconLabel: "Освещение",
-        title: "Xiaomi Mi Air Purifier 2S",
-        subtitle: "Включено",
-      },
-      {
-        icon: "light",
-        iconLabel: "Освещение",
-        title: "Philips Zhirui",
-        subtitle: "Включено",
-      },
-    ],
-  },
-  cameras: {
-    title: "Камеры",
-    items: [
-      {
-        icon: "light2",
-        iconLabel: "Освещение",
-        title: "Xiaomi Mi Air Purifier 2S",
-        subtitle: "Включено",
-      },
-    ],
-  },
-};
-
-for (let i = 0; i < 6; ++i) {
-  Array.prototype.push.apply(TABS.all.items, TABS.all.items);
-}
-
-console.log(TABS);
+import data from "./data.json";
 
 const TABS_KEYS = ["all", "kitchen", "hall", "lights", "cameras"];
 
@@ -145,6 +10,7 @@ function Mainer() {
   const initedRef = React.useRef(false);
   const [activeTab, setActiveTab] = React.useState("");
   const [hasRightScroll, setHasRightScroll] = React.useState(false);
+  const [TABS, setTabs] = React.useState(data);
 
   React.useEffect(() => {
     if (!activeTab && !initedRef.current) {
