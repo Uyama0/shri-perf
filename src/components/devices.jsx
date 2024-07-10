@@ -23,7 +23,7 @@ const Devices = () => {
       initedRef.current = true;
       setActiveTab(new URLSearchParams(location.search).get("tab") || "all");
     }
-  });
+  }, []);
 
   const onSelectInput = (event) => {
     setActiveTab(event.target.value);
