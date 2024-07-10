@@ -25,7 +25,6 @@ const Devices = () => {
   let sizes = [];
   const onSize = useCallback(
     (size) => {
-      console.log(size);
       sizes = [...sizes, size];
     },
     [sizes]
