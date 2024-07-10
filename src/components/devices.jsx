@@ -24,19 +24,11 @@ const Devices = () => {
       initedRef.current = true;
       setActiveTab(new URLSearchParams(location.search).get("tab") || "all");
     }
-  });
+  }, []);
 
   const onSelectInput = (event) => {
     setActiveTab(event.target.value);
   };
-
-  useEffect(() => {
-    const sumWidth = sizesMap.get(activeTab);
-    const newHasRightScroll = sumWidth > ref.current.offsetWidth;
-    if (newHasRightScroll !== hasRightScroll) {
-      setHasRightScroll(newHasRightScroll);
-    }
-  });
 
   const onArrowCLick = () => {
     const scroller = ref.current.querySelector(
