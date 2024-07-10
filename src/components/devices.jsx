@@ -7,7 +7,7 @@ const TABS_KEYS = ["all", "kitchen", "hall", "lights", "cameras"];
 const Devices = () => {
   const ref = React.useRef();
   const initedRef = React.useRef(false);
-  const [activeTab, setActiveTab] = React.useState("all");
+  const [activeTab, setActiveTab] = React.useState("");
   const [hasRightScroll, setHasRightScroll] = React.useState(false);
   const [TABS] = React.useState(data);
 
@@ -86,18 +86,25 @@ const Devices = () => {
       </div>
 
       <div className="section__panel-wrapper" ref={ref}>
-        <div
-          role="tabpanel"
-          className="section__panel"
-          id={`panel_${activeTab}`}
-          aria-labelledby={`tab_${activeTab}`}
-        >
-          <ul className="section__panel-list">
-            {TABS[activeTab].items.map((item, index) => (
-              <Event key={index} {...item} onSize={onSize} />
-            ))}
-          </ul>
-        </div>
+        {TABS_KEYS.map((key) => (
+          <div
+            key={key}
+            role="tabpanel"
+            className={
+              "section__panel" +
+              (key === activeTab ? "" : " section__panel_hidden")
+            }
+            aria-hidden={key === activeTab ? "false" : "true"}
+            id={`panel_${key}`}
+            aria-labelledby={`tab_${key}`}
+          >
+            <ul className="section__panel-list">
+              {TABS[key].items.map((item, index) => (
+                <Event key={index} {...item} onSize={onSize} />
+              ))}
+            </ul>
+          </div>
+        ))}
         {hasRightScroll && (
           <div className="section__arrow" onClick={onArrowCLick}></div>
         )}
