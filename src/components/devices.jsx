@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
 import Event from "./event";
 import TABS from "./static.json";
 
@@ -12,21 +12,10 @@ const sizesMap = new Map([
   ["cameras", 200],
 ]);
 
-for (let i = 0; i < 6; ++i) {
-  TABS.all.items = [].concat(TABS.all.items, TABS.all.items);
-}
-
 const Devices = () => {
   const ref = useRef();
-  const initedRef = useRef(false);
-  const [activeTab, setActiveTab] = useState("");
+  const [activeTab, setActiveTab] = useState("all");
   const [hasRightScroll, setHasRightScroll] = useState(false);
-  useEffect(() => {
-    if (!activeTab && !initedRef.current) {
-      initedRef.current = true;
-      setActiveTab(new URLSearchParams(location.search).get("tab") || "all");
-    }
-  });
 
   const onSelectInput = (event) => {
     setActiveTab(event.target.value);
@@ -38,7 +27,7 @@ const Devices = () => {
     if (newHasRightScroll !== hasRightScroll) {
       setHasRightScroll(newHasRightScroll);
     }
-  });
+  }, [activeTab]);
 
   const onArrowCLick = () => {
     const scroller = ref.current.querySelector(
