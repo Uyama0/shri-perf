@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import Event from "./event";
-import data from "./data.json";
+import data from "./static.json";
 
 const TABS_KEYS = ["all", "kitchen", "hall", "lights", "cameras"];
 
