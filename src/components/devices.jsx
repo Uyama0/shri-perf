@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from "react";
 import Event from "./event";
-import data from "./data.json";
 
 const TABS_KEYS = ["all", "kitchen", "hall", "lights", "cameras"];
 
@@ -12,12 +11,147 @@ const sizesMap = new Map([
   ["cameras", 200],
 ]);
 
+const TABS = {
+  all: {
+    title: "Все",
+    items: [
+      {
+        icon: "light2",
+        iconLabel: "Освещение",
+        title: "Xiaomi Yeelight LED Smart Bulb",
+        subtitle: "Включено",
+      },
+      {
+        icon: "light",
+        iconLabel: "Освещение",
+        title: "D-Link Omna 180 Cam",
+        subtitle: "Включится в 17:00",
+      },
+      {
+        icon: "temp",
+        iconLabel: "Температура",
+        title: "Elgato Eve Degree Connected",
+        subtitle: "Выключено до 17:00",
+      },
+      {
+        icon: "light",
+        iconLabel: "Освещение",
+        title: "LIFX Mini Day & Dusk A60 E27",
+        subtitle: "Включится в 17:00",
+      },
+      {
+        icon: "light2",
+        iconLabel: "Освещение",
+        title: "Xiaomi Mi Air Purifier 2S",
+        subtitle: "Включено",
+      },
+      {
+        icon: "light",
+        iconLabel: "Освещение",
+        title: "Philips Zhirui",
+        subtitle: "Включено",
+      },
+      {
+        icon: "light",
+        iconLabel: "Освещение",
+        title: "Philips Zhirui",
+        subtitle: "Включено",
+      },
+      {
+        icon: "light2",
+        iconLabel: "Освещение",
+        title: "Xiaomi Mi Air Purifier 2S",
+        subtitle: "Включено",
+      },
+    ],
+  },
+  kitchen: {
+    title: "Кухня",
+    items: [
+      {
+        icon: "light2",
+        iconLabel: "Освещение",
+        title: "Xiaomi Yeelight LED Smart Bulb",
+        subtitle: "Включено",
+      },
+      {
+        icon: "temp",
+        iconLabel: "Температура",
+        title: "Elgato Eve Degree Connected",
+        subtitle: "Выключено до 17:00",
+      },
+    ],
+  },
+  hall: {
+    title: "Зал",
+    items: [
+      {
+        icon: "light",
+        iconLabel: "Освещение",
+        title: "Philips Zhirui",
+        subtitle: "Выключено",
+      },
+      {
+        icon: "light2",
+        iconLabel: "Освещение",
+        title: "Xiaomi Mi Air Purifier 2S",
+        subtitle: "Выключено",
+      },
+    ],
+  },
+  lights: {
+    title: "Лампочки",
+    items: [
+      {
+        icon: "light",
+        iconLabel: "Освещение",
+        title: "D-Link Omna 180 Cam",
+        subtitle: "Включится в 17:00",
+      },
+      {
+        icon: "light",
+        iconLabel: "Освещение",
+        title: "LIFX Mini Day & Dusk A60 E27",
+        subtitle: "Включится в 17:00",
+      },
+      {
+        icon: "light2",
+        iconLabel: "Освещение",
+        title: "Xiaomi Mi Air Purifier 2S",
+        subtitle: "Включено",
+      },
+      {
+        icon: "light",
+        iconLabel: "Освещение",
+        title: "Philips Zhirui",
+        subtitle: "Включено",
+      },
+    ],
+  },
+  cameras: {
+    title: "Камеры",
+    items: [
+      {
+        icon: "light2",
+        iconLabel: "Освещение",
+        title: "Xiaomi Mi Air Purifier 2S",
+        subtitle: "Включено",
+      },
+    ],
+  },
+};
+
 const Devices = () => {
   const ref = useRef();
   const initedRef = useRef(false);
   const [activeTab, setActiveTab] = useState("");
   const [hasRightScroll, setHasRightScroll] = useState(false);
-  const [TABS] = useState(data);
+
+  useEffect(() => {
+    for (let i = 0; i < 6; ++i) {
+      [].concat(TABS.all.items, TABS.all.items);
+    }
+  });
 
   useEffect(() => {
     if (!activeTab && !initedRef.current) {
