@@ -149,7 +149,7 @@ const Devices = () => {
 
   useEffect(() => {
     for (let i = 0; i < 6; ++i) {
-      [].concat(TABS.all.items, TABS.all.items);
+      TABS.all.items = [].concat(TABS.all.items, TABS.all.items);
     }
   });
 
