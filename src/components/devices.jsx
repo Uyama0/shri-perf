@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import Event from "./event";
-import TABS from "./static.json";
+import data from "./data.json";
 
 const TABS_KEYS = ["all", "kitchen", "hall", "lights", "cameras"];
 
@@ -17,13 +17,14 @@ const Devices = () => {
   const initedRef = useRef(false);
   const [activeTab, setActiveTab] = useState("");
   const [hasRightScroll, setHasRightScroll] = useState(false);
+  const [TABS] = useState(data);
 
   useEffect(() => {
     if (!activeTab && !initedRef.current) {
       initedRef.current = true;
       setActiveTab(new URLSearchParams(location.search).get("tab") || "all");
     }
-  }, []);
+  });
 
   const onSelectInput = (event) => {
     setActiveTab(event.target.value);
@@ -35,7 +36,7 @@ const Devices = () => {
     if (newHasRightScroll !== hasRightScroll) {
       setHasRightScroll(newHasRightScroll);
     }
-  }, [activeTab]);
+  });
 
   const onArrowCLick = () => {
     const scroller = ref.current.querySelector(
@@ -48,7 +49,6 @@ const Devices = () => {
       });
     }
   };
-
   return (
     <section className="section main__devices">
       <div className="section__title">
@@ -101,10 +101,9 @@ const Devices = () => {
             aria-labelledby={`tab_${key}`}
           >
             <ul className="section__panel-list">
-              {key === activeTab &&
-                TABS[key].items.map((item, index) => (
-                  <Event key={index} {...item} />
-                ))}
+              {TABS[key].items.map((item, index) => (
+                <Event key={index} {...item} />
+              ))}
             </ul>
           </div>
         ))}
