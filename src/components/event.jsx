@@ -2,11 +2,13 @@ function Event(props) {
   return (
     <li className={"event" + (props.slim ? " event_slim" : "")}>
       <button className="event__button">
-        <span
-          className={`event__icon event__icon_${props.icon}`}
+        <img
+          src={`icon_${props.icon}.svg`}
+          alt=""
           role="img"
           aria-label={props.iconLabel}
-        ></span>
+          className={`event__icon`}
+        />
         <h4 className="event__title">{props.title}</h4>
         {props.subtitle && (
           <span className="event__subtitle">{props.subtitle}</span>
