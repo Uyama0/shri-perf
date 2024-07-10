@@ -15,7 +15,7 @@ const sizesMap = new Map([
 const Devices = () => {
   const ref = useRef();
   const initedRef = useRef(false);
-  const [activeTab, setActiveTab] = useState("all");
+  const [activeTab, setActiveTab] = useState("");
   const [hasRightScroll, setHasRightScroll] = useState(false);
 
   useEffect(() => {
