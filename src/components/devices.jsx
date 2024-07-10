@@ -1,8 +1,16 @@
-import { useCallback, useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import Event from "./event";
 import data from "./data.json";
 
 const TABS_KEYS = ["all", "kitchen", "hall", "lights", "cameras"];
+
+const sizesMap = new Map([
+  ["all", 102400],
+  ["kitchen", 469],
+  ["hall", 400],
+  ["lights", 830],
+  ["cameras", 200],
+]);
 
 const Devices = () => {
   const ref = useRef();
@@ -22,17 +30,8 @@ const Devices = () => {
     setActiveTab(event.target.value);
   };
 
-  let sizes = [];
-  const onSize = useCallback(
-    (size) => {
-      sizes = [...sizes, size];
-    },
-    [sizes]
-  );
-
   useEffect(() => {
-    const sumWidth = sizes.reduce((acc, item) => acc + item.width, 0);
-
+    const sumWidth = sizesMap.get(activeTab);
     const newHasRightScroll = sumWidth > ref.current.offsetWidth;
     if (newHasRightScroll !== hasRightScroll) {
       setHasRightScroll(newHasRightScroll);
@@ -103,7 +102,7 @@ const Devices = () => {
           >
             <ul className="section__panel-list">
               {TABS[key].items.map((item, index) => (
-                <Event key={index} {...item} onSize={onSize} />
+                <Event key={index} {...item} />
               ))}
             </ul>
           </div>
