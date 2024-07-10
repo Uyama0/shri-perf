@@ -180,6 +180,7 @@ const Devices = () => {
       });
     }
   };
+
   return (
     <section className="section main__devices">
       <div className="section__title">
@@ -220,10 +221,12 @@ const Devices = () => {
 
       <div className="section__panel-wrapper" ref={ref}>
         <div
-          key={activeTab}
           role="tabpanel"
-          className="section__panel"
-          aria-hidden="false"
+          className={
+            "section__panel" +
+            (activeTab === activeTab ? "" : " section__panel_hidden")
+          }
+          aria-hidden={activeTab === activeTab ? "false" : "true"}
           id={`panel_${activeTab}`}
           aria-labelledby={`tab_${activeTab}`}
         >
