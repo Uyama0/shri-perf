@@ -101,13 +101,11 @@ const Devices = () => {
             id={`panel_${key}`}
             aria-labelledby={`tab_${key}`}
           >
-            {key === activeTab && (
-              <ul className="section__panel-list">
-                {TABS[key].items.map((item, index) => (
-                  <Event key={index} {...item} />
-                ))}
-              </ul>
-            )}
+            <ul className="section__panel-list">
+              {TABS[key].items.map((item, index) => (
+                <Event key={index} {...item} />
+              ))}
+            </ul>
           </div>
         ))}
         {hasRightScroll && (
