@@ -30,6 +30,14 @@ const Devices = () => {
     setActiveTab(event.target.value);
   };
 
+  useEffect(() => {
+    const sumWidth = sizesMap.get(activeTab);
+    const newHasRightScroll = sumWidth > ref.current.offsetWidth;
+    if (newHasRightScroll !== hasRightScroll) {
+      setHasRightScroll(newHasRightScroll);
+    }
+  }, [activeTab]);
+
   const onArrowCLick = () => {
     const scroller = ref.current.querySelector(
       ".section__panel:not(.section__panel_hidden)"
