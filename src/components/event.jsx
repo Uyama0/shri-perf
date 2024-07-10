@@ -8,7 +8,7 @@ function Event(props) {
           aria-label={props.iconLabel}
         ></span> */}
         <img
-          src={`public/assets/icon_${props.icon}.svg`}
+          src={`/assets/icon_${props.icon}.svg`}
           alt={`${props.label}`}
           className={`event__icon`}
         />
