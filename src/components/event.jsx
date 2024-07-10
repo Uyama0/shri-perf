@@ -1,14 +1,14 @@
+import { memo } from "react";
+
 function Event(props) {
   return (
     <li className={"event" + (props.slim ? " event_slim" : "")}>
       <button className="event__button">
-        <img
-          src={`icon_${props.icon}.svg`}
-          alt=""
+        <span
+          className={`event__icon event__icon_${props.icon}`}
           role="img"
           aria-label={props.iconLabel}
-          className={`event__icon`}
-        />
+        ></span>
         <h4 className="event__title">{props.title}</h4>
         {props.subtitle && (
           <span className="event__subtitle">{props.subtitle}</span>
@@ -18,4 +18,4 @@ function Event(props) {
   );
 }
 
-export default Event;
+export default memo(Event);

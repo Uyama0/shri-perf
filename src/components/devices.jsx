@@ -49,6 +49,7 @@ const Devices = () => {
       });
     }
   };
+
   return (
     <section className="section main__devices">
       <div className="section__title">
