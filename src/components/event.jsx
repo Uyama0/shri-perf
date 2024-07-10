@@ -16,7 +16,7 @@ function Event(props) {
     <li ref={ref} className={"event" + (props.slim ? " event_slim" : "")}>
       <button className="event__button">
         <img
-          src={`src/assets/icon_${props.icon}.svg`}
+          src={`assets/icon_${props.icon}.svg`}
           alt={`${props.label}`}
           className={`event__icon`}
         />
