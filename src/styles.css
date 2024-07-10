@@ -463,6 +463,26 @@ body {
   background-size: contain;
 }
 
+.event__icon_temp {
+  background-image: url(assets/icon_temp.svg);
+}
+
+.event__icon_temp2 {
+  background-image: url(assets/icon_temp2.svg);
+}
+
+.event__icon_light {
+  background-image: url(assets/icon_light.svg);
+}
+
+.event__icon_light2 {
+  background-image: url(assets/icon_light2.svg);
+}
+
+.event__icon_schedule {
+  background-image: url(assets/icon_schedule.svg);
+}
+
 .event__title {
   margin: 0;
   font-size: 0.875rem;
