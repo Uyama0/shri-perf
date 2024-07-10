@@ -1,17 +1,17 @@
-import React from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import Event from "./event";
 import data from "./data.json";
 
 const TABS_KEYS = ["all", "kitchen", "hall", "lights", "cameras"];
 
 const Devices = () => {
-  const ref = React.useRef();
-  const initedRef = React.useRef(false);
-  const [activeTab, setActiveTab] = React.useState("");
-  const [hasRightScroll, setHasRightScroll] = React.useState(false);
-  const [TABS] = React.useState(data);
+  const ref = useRef();
+  const initedRef = useRef(false);
+  const [activeTab, setActiveTab] = useState("");
+  const [hasRightScroll, setHasRightScroll] = useState(false);
+  const [TABS] = useState(data);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!activeTab && !initedRef.current) {
       initedRef.current = true;
       setActiveTab(new URLSearchParams(location.search).get("tab") || "all");
@@ -23,11 +23,15 @@ const Devices = () => {
   };
 
   let sizes = [];
-  const onSize = (size) => {
-    sizes = [...sizes, size];
-  };
+  const onSize = useCallback(
+    (size) => {
+      console.log(size);
+      sizes = [...sizes, size];
+    },
+    [sizes]
+  );
 
-  React.useEffect(() => {
+  useEffect(() => {
     const sumWidth = sizes.reduce((acc, item) => acc + item.width, 0);
 
     const newHasRightScroll = sumWidth > ref.current.offsetWidth;
