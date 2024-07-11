@@ -31,4 +31,9 @@ export default defineConfig({
   optimizeDeps: {
     include: ["react", "react-dom"],
   },
+  server: {
+    warmup: {
+      clientFiles: ["./src/components/devices.jsx", "./src/static.json"],
+    },
+  },
 });
