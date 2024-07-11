@@ -7,7 +7,6 @@ export default defineConfig({
   base: "/shri-perf/",
   plugins: [react(), compression({ algorithm: "brotliCompress" })],
   build: {
-    minify: "terser",
     rollupOptions: {
       output: {
         manualChunks(id) {
