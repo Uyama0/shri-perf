@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import Event from "./event";
-import data from "./static.json";
+import { TABS } from "./static.js";
 
 const TABS_KEYS = ["all", "kitchen", "hall", "lights", "cameras"];
 
@@ -12,12 +12,15 @@ const sizesMap = new Map([
   ["cameras", 200],
 ]);
 
+for (let i = 0; i < 6; ++i) {
+  TABS.all.items = TABS.all.items.concat(TABS.all.items);
+}
+
 const Devices = () => {
   const ref = useRef();
   const initedRef = useRef(false);
   const [activeTab, setActiveTab] = useState("");
   const [hasRightScroll, setHasRightScroll] = useState(false);
-  const [TABS] = useState(data);
 
   useEffect(() => {
     if (!activeTab && !initedRef.current) {
