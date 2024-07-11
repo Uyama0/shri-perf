@@ -1,12 +1,18 @@
 import Footer from "./components/footer";
 import Header from "./components/header";
-import Mainer from "./components/mainer";
+import Devices from "./components/devices";
+import General from "./components/general";
+import Scripts from "./components/scripts";
 
 function App() {
   return (
     <div className="app">
       <Header />
-      <Mainer />
+      <main className="main">
+        <General />
+        <Scripts />
+        <Devices />
+      </main>
       <Footer />
     </div>
   );
