@@ -14,8 +14,16 @@ const sizesMap = new Map([
 
 const Devices = () => {
   const ref = useRef();
-  const [activeTab, setActiveTab] = useState("all");
+  const initedRef = useRef(false);
+  const [activeTab, setActiveTab] = useState("");
   const [hasRightScroll, setHasRightScroll] = useState(false);
+
+  useEffect(() => {
+    if (!activeTab && !initedRef.current) {
+      initedRef.current = true;
+      setActiveTab(new URLSearchParams(location.search).get("tab") || "all");
+    }
+  }, []);
 
   const onSelectInput = useCallback((event) => {
     setActiveTab(event.target.value);
