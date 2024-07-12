@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 import Event from "./event";
-import { TABS } from "/src/static.js";
+import TABS from "/src/static.json";
 
 const TABS_KEYS = ["all", "kitchen", "hall", "lights", "cameras"];
 
@@ -23,7 +23,7 @@ const Devices = () => {
       initedRef.current = true;
       setActiveTab(new URLSearchParams(location.search).get("tab") || "all");
     }
-  }, []);
+  }, []); 
 
   const onSelectInput = useCallback((event) => {
     setActiveTab(event.target.value);

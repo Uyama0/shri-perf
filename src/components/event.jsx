@@ -9,7 +9,7 @@ function Event(props) {
           role="img"
           aria-label={props.iconLabel}
         ></span>
-        <h4 className="event__title">{props.title}</h4>
+        <h4>{props.title}</h4>
         {props.subtitle && (
           <span className="event__subtitle">{props.subtitle}</span>
         )}
