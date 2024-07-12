@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 import Event from "./event";
-import TABS from "/src/static.json";
+import { TABS } from "/src/static.js";
 
 const TABS_KEYS = ["all", "kitchen", "hall", "lights", "cameras"];
 
@@ -101,17 +101,10 @@ const Devices = () => {
             aria-labelledby={`tab_${ke}`}
           >
             <ul className="section__panel-list">
-              {ke === "all"
-                ? ke === activeTab &&
-                  Array.from({ length: 12 }, (_, i) =>
-                    TABS[ke].items.map((item, index) => (
-                      <Event key={`${i}-${index}`} {...item} />
-                    ))
-                  )
-                : ke === activeTab &&
-                  TABS[ke].items.map((item, index) => (
-                    <Event key={index} {...item} />
-                  ))}
+              {activeTab === ke &&
+                TABS[ke].items.map((item, index) => (
+                  <Event key={index} {...item} />
+                ))}
             </ul>
           </div>
         ))}
