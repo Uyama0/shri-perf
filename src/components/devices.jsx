@@ -88,22 +88,30 @@ const Devices = () => {
       </div>
 
       <div className="section__panel-wrapper" ref={ref}>
-        {TABS_KEYS.map((key) => (
+        {TABS_KEYS.map((ke) => (
           <div
-            key={key}
+            key={ke}
             role="tabpanel"
             className={
               "section__panel" +
-              (key === activeTab ? "" : " section__panel_hidden")
+              (ke === activeTab ? "" : " section__panel_hidden")
             }
-            aria-hidden={key === activeTab ? "false" : "true"}
-            id={`panel_${key}`}
-            aria-labelledby={`tab_${key}`}
+            aria-hidden={ke === activeTab ? "false" : "true"}
+            id={`panel_${ke}`}
+            aria-labelledby={`tab_${ke}`}
           >
             <ul className="section__panel-list">
-              {TABS[key].items.map((item, index) => (
-                <Event key={index} {...item} />
-              ))}
+              {ke === "all"
+                ? ke === activeTab &&
+                  Array.from({ length: 12 }, (_, i) =>
+                    TABS[ke].items.map((item, index) => (
+                      <Event key={`${i}-${index}`} {...item} />
+                    ))
+                  )
+                : ke === activeTab &&
+                  TABS[ke].items.map((item, index) => (
+                    <Event key={index} {...item} />
+                  ))}
             </ul>
           </div>
         ))}
