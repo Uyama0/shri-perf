@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useCallback } from "react";
+import { useEffect, useState, useRef, useCallback } from "preact/hooks";
 import Event from "./event";
 import TABS from "/src/static.json";
 
@@ -23,7 +23,7 @@ const Devices = () => {
       initedRef.current = true;
       setActiveTab(new URLSearchParams(location.search).get("tab") || "all");
     }
-  }, []); 
+  }, []); // перенести в useState
 
   const onSelectInput = useCallback((event) => {
     setActiveTab(event.target.value);

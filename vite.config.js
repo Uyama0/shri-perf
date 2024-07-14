@@ -1,11 +1,11 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
+import preact from "@preact/preset-vite";
 import compression from "vite-plugin-compression";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   base: "/shri-perf/",
-  plugins: [react(), compression({ algorithm: "brotliCompress" })],
+  plugins: [preact(), compression({ algorithm: "brotliCompress" })],
   build: {
     minify: "terser",
     rollupOptions: {
@@ -27,9 +27,6 @@ export default defineConfig({
       drop_console: true,
       drop_debugger: true,
     },
-  },
-  optimizeDeps: {
-    include: ["react", "react-dom"],
   },
   server: {
     warmup: {

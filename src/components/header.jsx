@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from "preact/hooks";
 
 function Header() {
   let [expanded, setExpanded] = useState(false);

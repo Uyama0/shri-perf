@@ -482,7 +482,7 @@ body {
   background-image: url(/icon_schedule.svg);
 }
 
-.event__button h4 {
+.event__title {
   margin: 0;
   font-size: 0.875rem;
   font-weight: bold;
